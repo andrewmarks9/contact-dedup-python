@@ -22,17 +22,32 @@ This project provides a Python script to deduplicate contact records in an Excel
    ```bash
    pip install -r requirements.txt
    ```
+3. (Optional) Generate test Excel files for development and CI:
+   ```bash
+   python create_test_xlsx.py
+   ```
+
 
 
 ## Usage
 1. Place your input Excel file in the project directory and name it `dedup_input.xlsx` (or update the `INPUT_FILE` variable in the script to match your filename).
-2. Run the script:
+2. Run the deduplication script:
    ```bash
    python dedup.py
    ```
 3. Output files:
    - `deduped_contacts.xlsx`: deduplicated contacts
    - `near_duplicates.xlsx`: fuzzy near-duplicate pairs
+
+## Testing
+Unit tests are provided in `test_dedup.py` and use the generated test Excel files. The test script imports functions from `dedup.py`.
+
+To run tests:
+```bash
+pytest
+```
+
+If all tests pass, you will see an exit code 0 and a summary of successful tests.
 
 > **Note:** The script requires the `openpyxl` engine for reading/writing `.xlsx` files. This is included in `requirements.txt`.
 
